@@ -61,6 +61,7 @@ html, body,main {
 
 .category-btn {
     background-color: #8D745F;
+    width: 200px;
     color: white;
     padding: 10px;
     border: none;
@@ -202,3 +203,4 @@ html, body,main {
 .modal.show {
     display: block;
 }
+
