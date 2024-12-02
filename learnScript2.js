@@ -27,7 +27,7 @@ initializeCounts(1);
 initializeCounts(2);
 
 
-import { createClient } from '@supabase/supabase-js';
+import { createClient } from 'https://cdn.skypack.dev/@supabase/supabase-js';
 
 // Supabase URL 和 API 密鑰
 const SUPABASE_URL = 'https://iunfsvxrmneynpnzcjmq.supabase.co';
