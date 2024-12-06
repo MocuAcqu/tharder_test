@@ -68,6 +68,7 @@ async function increaseCool(courseId) {
     // 更新畫面上的數據
     document.getElementById(`cool-count-${courseId}`).innerText = `${coolData[0].cool_count} 人`;
 
+    
     // 更新 hard_count 數量
     const { data: hardData, error: hardError } = await supabase
         .from('reactions')
