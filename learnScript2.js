@@ -54,11 +54,17 @@ async function fetchReactions() {
 
 fetchReactions();
 
+/*const { data, error } = await supabase.rpc('increment', { course_id: 1, column_name: 'cool_count' });
+if (error) {
+    console.error(error);
+} else {
+    console.log('Updated data:', data);
+}*/
+
 async function increaseCool(courseId) {
     // 調用 increment 函數更新 cool_count
-    const { data: updatedData, error } = await supabase
-        .rpc('increment', { course_id: courseId, column: 'cool_count' });
-
+    const { data, error } = await supabase.rpc('increment', { course_id: courseId, column: 'cool_count' });
+        
     if (error) {
         console.error('Error incrementing cool count:', error);
         return;
@@ -72,8 +78,7 @@ async function increaseCool(courseId) {
 
 async function increaseHard(courseId) {
     // 調用 increment 函數更新 hard_count
-    const { data: updatedData, error } = await supabase
-        .rpc('increment', { course_id: courseId, column: 'hard_count' });
+    const { data, error } = await supabase.rpc('increment', { course_id: courseId, column: 'hard_count' });
 
     if (error) {
         console.error('Error incrementing hard count:', error);
