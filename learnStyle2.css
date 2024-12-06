@@ -232,9 +232,3 @@ html, body,main {
 .comment-btn:hover {
     background-color: #3E2F23;
 }
-
-.reaction-btn.reacted {
-    background-color: #3E2F23;
-    color: #FFF;
-    font-weight: bold;
-}
