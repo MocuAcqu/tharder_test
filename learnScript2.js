@@ -54,10 +54,9 @@ async function fetchReactions() {
 fetchReactions();
 
 async function increaseCool(courseId) {
-    // 更新 cool_count 數量
     const { data, error } = await supabase
         .from('reactions')
-        .update({ cool_count: supabase.raw('cool_count + 1') }) // 使用 raw 表示數值加 1
+        .update({ cool_count: supabase.rpc('increment', { x: 1 }) }) // 正確更新方式
         .eq('id', courseId);
 
     if (error) {
@@ -70,10 +69,9 @@ async function increaseCool(courseId) {
 }
 
 async function increaseHard(courseId) {
-    // 更新 hard_count 數量
     const { data, error } = await supabase
         .from('reactions')
-        .update({ hard_count: supabase.raw('hard_count + 1') }) // 使用 raw 表示數值加 1
+        .update({ hard_count: supabase.rpc('increment', { x: 1 }) }) // 正確更新方式
         .eq('id', courseId);
 
     if (error) {
@@ -84,6 +82,7 @@ async function increaseHard(courseId) {
     // 更新畫面上的數據
     document.getElementById(`hard-count-${courseId}`).innerText = `${data[0].hard_count} 人`;
 }
+
 
 document.addEventListener('DOMContentLoaded', () => {
     document.querySelectorAll('.reaction-btn').forEach(button => {
