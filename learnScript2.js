@@ -9,15 +9,15 @@ function initializeCounts(courseId) {
     courseCounts.cool[courseId] = 0;
     courseCounts.hard[courseId] = 0;
 }
-
+/*
 // 涼+1
-/*function increaseCool(courseId) {
+function increaseCool(courseId) {
     courseCounts.cool[courseId] += 1;
     document.getElementById(`cool-count-${courseId}`).innerText = courseCounts.cool[courseId] + '人';
-}*/
+}
 
 // 硬+1
-/*function increaseHard(courseId) {
+function increaseHard(courseId) {
     courseCounts.hard[courseId] += 1;
     document.getElementById(`hard-count-${courseId}`).innerText = courseCounts.hard[courseId] + '人';
 }*/
@@ -55,33 +55,35 @@ fetchReactions();
 
 async function increaseCool(courseId) {
     // 更新 cool_count 數量
-    const { data: coolData, error: coolError } = await supabase
+    const { data, error } = await supabase
         .from('reactions')
         .update({ cool_count: supabase.raw('cool_count + 1') }) // 使用 raw 表示數值加 1
         .eq('id', courseId);
 
-    if (coolError) {
-        console.error('Error updating cool count:', coolError);
+    if (error) {
+        console.error('Error updating cool count:', error);
         return;
     }
 
     // 更新畫面上的數據
-    document.getElementById(`cool-count-${courseId}`).innerText = `${coolData[0].cool_count} 人`;
+    document.getElementById(`cool-count-${courseId}`).innerText = `${data[0].cool_count} 人`;
+}
 
-    
+async function increaseHard(courseId) {
     // 更新 hard_count 數量
-    const { data: hardData, error: hardError } = await supabase
+    const { data, error } = await supabase
         .from('reactions')
         .update({ hard_count: supabase.raw('hard_count + 1') }) // 使用 raw 表示數值加 1
         .eq('id', courseId);
 
-    if (hardError) {
-        console.error('Error updating hard count:', hardError);
+    if (error) {
+        console.error('Error updating hard count:', error);
         return;
     }
 
     // 更新畫面上的數據
-    document.getElementById(`hard-count-${courseId}`).innerText = `${hardData[0].hard_count} 人`;
+    document.getElementById(`hard-count-${courseId}`).innerText = `${data[0].hard_count} 人`;
 }
+
 
 
