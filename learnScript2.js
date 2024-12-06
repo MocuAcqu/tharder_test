@@ -55,9 +55,10 @@ async function fetchReactions() {
 fetchReactions();
 
 async function increaseCool(courseId) {
+    // 使用 RPC 調用增量函數
     const { data, error } = await supabase
         .from('reactions')
-        .update({ cool_count: supabase.rpc('increment', { x: 1 }) }) // 正確更新方式
+        .update({ cool_count: supabase.rpc('increment', { x: 'cool_count' }) })
         .eq('id', courseId);
 
     if (error) {
@@ -70,9 +71,10 @@ async function increaseCool(courseId) {
 }
 
 async function increaseHard(courseId) {
+    // 使用 RPC 調用增量函數
     const { data, error } = await supabase
         .from('reactions')
-        .update({ hard_count: supabase.rpc('increment', { x: 1 }) }) // 正確更新方式
+        .update({ hard_count: supabase.rpc('increment', { x: 'hard_count' }) })
         .eq('id', courseId);
 
     if (error) {
