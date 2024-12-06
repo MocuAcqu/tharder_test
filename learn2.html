@@ -30,51 +30,30 @@
                 <h2>課程評價</h2>
             </div>
             <!-- 範例課程訊息框 -->
-            <div class="message">
-                <div class="course-info">
-                    <p class="course-name">作業系統</p>
-                    <p class="teacher-name">XXX老師</p>
-                    <p class="course-time">週一 10:00-12:00</p>
-                </div>
-                <div class="actions">
-                    <div class="reaction">
-                        <div class="reaction-item">
-                            <span class="reaction-count" id="cool-count-1">0人</span>
-                            <button class="reaction-btn" data-id="1" data-type="cool" onclick="toggleReaction(1, 'cool')">涼+1</button>
-                        </div>
-                        <div class="reaction-item">
-                            <span class="reaction-count" id="hard-count-1">0人</span>
-                            <button class="reaction-btn" data-id="1" data-type="hard" onclick="toggleReaction(1, 'hard')">硬+1</button>
-                        </div>
-                        <div class="reaction-item">
-                            <button class="comment-btn">留言</button>
+            <template id="message-template">
+                <div class="message">
+                    <div class="course-info">
+                        <p class="course-name"></p>
+                        <p class="teacher-name"></p>
+                        <p class="course-time"></p>
+                    </div>
+                    <div class="actions">
+                        <div class="reaction">
+                            <div class="reaction-item">
+                                <span class="reaction-count" data-type="cool">0人</span>
+                                <button class="reaction-btn" data-type="cool" aria-label="按涼+1">涼+1</button>
+                            </div>
+                            <div class="reaction-item">
+                                <span class="reaction-count" data-type="hard">0人</span>
+                                <button class="reaction-btn" data-type="hard" aria-label="按硬+1">硬+1</button>
+                            </div>
+                            <div class="reaction-item">
+                                <button class="comment-btn" aria-label="留言按鈕">留言</button>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
-            <div class="message">
-                <div class="course-info">
-                    <p class="course-name">作業系統</p>
-                    <p class="teacher-name">XXX老師</p>
-                    <p class="course-time">週一 10:00-12:00</p>
-                </div>
-                <div class="actions">
-                    <div class="reaction">
-                        <div class="reaction-item">
-                            <span class="reaction-count" id="cool-count-2">0人</span>
-                            <button class="reaction-btn" onclick="increaseCool(2)">涼+1</button>
-                        </div>
-                        <div class="reaction-item">
-                            <span class="reaction-count" id="hard-count-2">0人</span>
-                            <button class="reaction-btn" onclick="increaseHard(2)">硬+1</button>
-                        </div>
-                        <div class="reaction-item">
-                            <button class="comment-btn">留言</button>
-                        </div>
-                        
-                    </div>
-                </div>
-            </div>
+            </template>
         </div>
     </div>
     
