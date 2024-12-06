@@ -55,31 +55,32 @@ fetchReactions();
 
 async function increaseCool(courseId) {
     // 更新 cool_count 數量
-    const { data, error } = await supabase
+    const { data: coolData, error: coolError } = await supabase
         .from('reactions')
         .update({ cool_count: supabase.raw('cool_count + 1') }) // 使用 raw 表示數值加 1
         .eq('id', courseId);
 
-    if (error) {
-        console.error('Error updating cool count:', error);
+    if (coolError) {
+        console.error('Error updating cool count:', coolError);
         return;
     }
 
     // 更新畫面上的數據
-    document.getElementById(`cool-count-${courseId}`).innerText = `${data[0].cool_count} 人`;
+    document.getElementById(`cool-count-${courseId}`).innerText = `${coolData[0].cool_count} 人`;
 
-    const { data, error } = await supabase
+    // 更新 hard_count 數量
+    const { data: hardData, error: hardError } = await supabase
         .from('reactions')
         .update({ hard_count: supabase.raw('hard_count + 1') }) // 使用 raw 表示數值加 1
         .eq('id', courseId);
 
-    if (error) {
-        console.error('Error updating hard count:', error);
+    if (hardError) {
+        console.error('Error updating hard count:', hardError);
         return;
     }
 
     // 更新畫面上的數據
-    document.getElementById(`hard-count-${courseId}`).innerText = `${data[0].hard_count} 人`;
+    document.getElementById(`hard-count-${courseId}`).innerText = `${hardData[0].hard_count} 人`;
 }
 
 
