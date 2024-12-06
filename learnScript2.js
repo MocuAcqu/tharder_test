@@ -85,5 +85,19 @@ async function increaseHard(courseId) {
     document.getElementById(`hard-count-${courseId}`).innerText = `${data[0].hard_count} 人`;
 }
 
+document.addEventListener('DOMContentLoaded', () => {
+    document.querySelectorAll('.reaction-btn').forEach(button => {
+        button.addEventListener('click', (event) => {
+            const action = event.target.dataset.action; // 取得涼或硬的動作
+            const courseId = event.target.dataset.courseId; // 取得課程 ID
+
+            if (action === 'cool') {
+                increaseCool(courseId);
+            } else if (action === 'hard') {
+                increaseHard(courseId);
+            }
+        });
+    });
+});
 
 
