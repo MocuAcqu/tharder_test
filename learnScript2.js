@@ -55,35 +55,35 @@ async function fetchReactions() {
 fetchReactions();
 
 async function increaseCool(courseId) {
-    // 使用 RPC 調用增量函數
-    const { data, error } = await supabase
-        .from('reactions')
-        .update({ cool_count: supabase.rpc('increment', { x: 'cool_count' }) })
-        .eq('id', courseId);
+    // 調用 increment 函數更新 cool_count
+    const { data: updatedData, error } = await supabase
+        .rpc('increment', { course_id: courseId, column: 'cool_count' });
 
     if (error) {
-        console.error('Error updating cool count:', error);
+        console.error('Error incrementing cool count:', error);
         return;
     }
 
     // 更新畫面上的數據
-    document.getElementById(`cool-count-${courseId}`).innerText = `${data[0].cool_count} 人`;
+    if (updatedData) {
+        document.getElementById(`cool-count-${courseId}`).innerText = `${updatedData[0].cool_count} 人`;
+    }
 }
 
 async function increaseHard(courseId) {
-    // 使用 RPC 調用增量函數
-    const { data, error } = await supabase
-        .from('reactions')
-        .update({ hard_count: supabase.rpc('increment', { x: 'hard_count' }) })
-        .eq('id', courseId);
+    // 調用 increment 函數更新 hard_count
+    const { data: updatedData, error } = await supabase
+        .rpc('increment', { course_id: courseId, column: 'hard_count' });
 
     if (error) {
-        console.error('Error updating hard count:', error);
+        console.error('Error incrementing hard count:', error);
         return;
     }
 
     // 更新畫面上的數據
-    document.getElementById(`hard-count-${courseId}`).innerText = `${data[0].hard_count} 人`;
+    if (updatedData) {
+        document.getElementById(`hard-count-${courseId}`).innerText = `${updatedData[0].hard_count} 人`;
+    }
 }
 
 
