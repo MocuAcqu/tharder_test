@@ -238,28 +238,3 @@ html, body,main {
     color: #FFF;
     font-weight: bold;
 }
-
-/* 響應式設計 */
-@media (max-width: 768px) {
-    .container {
-        flex-direction: column;
-        gap: 15px;
-    }
-
-    .sidebar {
-        max-width: none;
-    }
-
-    .message-board {
-        flex: unset;
-    }
-
-    .category-btn {
-        font-size: 14px;
-    }
-
-    .reaction-btn, .comment-btn {
-        font-size: 12px;
-        padding: 5px;
-    }
-}
