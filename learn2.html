@@ -40,11 +40,11 @@
                     <div class="reaction">
                         <div class="reaction-item">
                             <span class="reaction-count" id="cool-count-1">0人</span>
-                            <button class="reaction-btn" onclick="increaseCool(1)">涼+1</button>
+                            <button class="reaction-btn" data-id="1" data-type="cool" onclick="toggleReaction(1, 'cool')">涼+1</button>
                         </div>
                         <div class="reaction-item">
                             <span class="reaction-count" id="hard-count-1">0人</span>
-                            <button class="reaction-btn" onclick="increaseHard(1)">硬+1</button>
+                            <button class="reaction-btn" data-id="1" data-type="hard" onclick="toggleReaction(1, 'hard')">硬+1</button>
                         </div>
                         <div class="reaction-item">
                             <button class="comment-btn">留言</button>
