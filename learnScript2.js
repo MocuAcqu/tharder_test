@@ -61,6 +61,7 @@ if (error) {
     console.log('Updated data:', data);
 }*/
 
+
 async function increaseCool(courseId) {
     // 調用 increment 函數更新 cool_count
     const { data, error } = await supabase.rpc('increment', { course_id: courseId, column: 'cool_count' });
@@ -68,6 +69,8 @@ async function increaseCool(courseId) {
     if (error) {
         console.error('Error incrementing cool count:', error);
         return;
+    }else {
+        console.log('Cool count incremented:', data);
     }
 
     // 更新畫面上的數據
