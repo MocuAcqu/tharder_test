@@ -9,7 +9,7 @@ function initializeCounts(courseId) {
     courseCounts.cool[courseId] = 0;
     courseCounts.hard[courseId] = 0;
 }
-/*
+
 // 涼+1
 function increaseCool(courseId) {
     courseCounts.cool[courseId] += 1;
@@ -20,13 +20,13 @@ function increaseCool(courseId) {
 function increaseHard(courseId) {
     courseCounts.hard[courseId] += 1;
     document.getElementById(`hard-count-${courseId}`).innerText = courseCounts.hard[courseId] + '人';
-}*/
+}
 
 // 為每個課程初始化
 initializeCounts(1);
 initializeCounts(2);
 
-
+/*
 import { createClient } from 'https://cdn.skypack.dev/@supabase/supabase-js';
 
 const supabaseUrl = 'https://iunfsvxrmneynpnzcjmq.supabase.co'; // 從 Supabase 設定檔取得
@@ -53,7 +53,7 @@ async function fetchReactions() {
 }
 
 fetchReactions();
-
+*/
 /*const { data, error } = await supabase.rpc('increment', { course_id: 1, column_name: 'cool_count' });
 if (error) {
     console.error(error);
@@ -61,7 +61,7 @@ if (error) {
     console.log('Updated data:', data);
 }*/
 
-
+/*
 async function increaseCool(courseId) {
     // 調用 increment 函數更新 cool_count
     const { data, error } = await supabase.rpc('increment', { course_id: courseId, column: 'cool_count' });
@@ -110,4 +110,4 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 });
 
-
+*/
