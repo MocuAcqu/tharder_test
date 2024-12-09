@@ -104,7 +104,7 @@ html, body,main {
     display: flex;
     /*flex-direction: column;*/
     background-color: #EFE8E0;
-    padding: 20px;
+    padding: 10px;
     border-radius: 10px;
     margin-bottom: 20px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
@@ -139,7 +139,7 @@ html, body,main {
     padding: 5px 15px;
     border-radius: 5px;
     cursor: pointer;
-    font-size: 14px;
+    font-size: 18px;
     transition: background-color 0.3s;
 }
 
@@ -164,6 +164,7 @@ html, body,main {
     font-weight: bold;
     font-size: 16px;
     width: 100%;
+    margin-left: 5px;
     /*height: 40px;*/
 }
 
@@ -206,7 +207,7 @@ html, body,main {
     border: none;
     padding: 5px 15px;
     border-radius: 5px;
-    font-size: 14px;
+    font-size: 16px;
     cursor: pointer;
 
 }
@@ -222,7 +223,7 @@ html, body,main {
     border: none;
     padding: 5px 15px;
     border-radius: 5px;
-    font-size: 14px;
+    font-size: 16px;
     cursor: pointer;
     margin-left: 20px;
     width: 100px;
@@ -237,7 +238,7 @@ html, body,main {
     display: flex;
     align-items: center;
     padding: 0px 40%;
-    gap: 5px;
+    gap: 10px;
 }
 
 .pages a{
