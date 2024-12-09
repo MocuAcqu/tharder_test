@@ -185,7 +185,7 @@ html, body,main {
     display: flex;
     justify-content: space-between;
     margin-bottom: 15px;
-    margin-left: 5%;
+    margin-left: 30%;
 }
 
 .reaction-item {
@@ -195,7 +195,7 @@ html, body,main {
 }
 
 .reaction-count {
-    font-size: 18px;
+    font-size: 20px;
     font-weight: bold;
     color: #3E2F23;
     margin-left: 10px;
@@ -205,7 +205,7 @@ html, body,main {
     background-color: #8D745F;
     color: white;
     border: none;
-    padding: 5px 15px;
+    padding: 5px 20px;
     border-radius: 5px;
     font-size: 16px;
     cursor: pointer;
