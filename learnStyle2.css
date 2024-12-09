@@ -164,12 +164,12 @@ html, body,main {
     margin-bottom: 10px;
     font-weight: bold;
     font-size: 16px;
-    width: 90%;
+    width: 80%;
     height: 40px;
 }
 
 .course-name {
-    font-size: 30px;
+    font-size: 25px;
     font-weight: bold;
     margin-right: 20px ;
 }
