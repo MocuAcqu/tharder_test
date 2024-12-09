@@ -233,12 +233,14 @@ html, body,main {
 }
 
 .pages{
+    width: 60%;
     display: flex;
     align-items: center;
+    padding: 0px 50%;
     gap: 5px;
 }
 
 .pages a{
     color: #3E2F23;
-    font-size: 18px;
+    font-size: 20px;
 }
