@@ -61,18 +61,17 @@ document.addEventListener('DOMContentLoaded', async () => {
     await initializeCounts(2);
 });
 
-async function testRPC(courseId, reactionType) {
-    try {
-        const { error, data } = await supabase.rpc('increment_reaction', {
-            p_course_id: courseId,
-            p_reaction_type: reactionType,
-        });
-        if (error) throw error;
-        console.log('函數執行成功：', data);
-    } catch (error) {
-        console.error('RPC 測試失敗：', error);
-    }
+const { error } = await supabase.rpc('increment_reaction', {
+    p_course_id: courseId,  // 傳入對應的函數參數
+    p_reaction_type: reactionType,
+});
+
+if (error) {
+    console.error('RPC 調用失敗:', error);
+} else {
+    console.log('RPC 成功');
 }
+
 
 // 測試
 testRPC(1, 'cool');
