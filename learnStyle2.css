@@ -127,7 +127,7 @@ html, body,main {
     display: flex;
     align-items: center;
     margin-top: 10px;
-    width: 70%;
+    width: 65%;
     
 }
 
@@ -230,4 +230,11 @@ html, body,main {
 
 .comment-btn:hover {
     background-color: #3E2F23;
+}
+
+.pages{
+    font-size: 12px;
+    color: #3E2F23;
+    display: flex;
+    align-items: center;
 }
