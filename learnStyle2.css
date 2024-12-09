@@ -127,7 +127,7 @@ html, body,main {
     display: flex;
     align-items: center;
     margin-top: 10px;
-    width: 65%;
+    width: 60%;
     
 }
 
@@ -184,7 +184,7 @@ html, body,main {
     display: flex;
     justify-content: space-between;
     margin-bottom: 15px;
-    margin-left: 10%;
+    margin-left: 5%;
 }
 
 .reaction-item {
@@ -233,8 +233,9 @@ html, body,main {
 }
 
 .pages{
-    font-size: 12px;
+    font-size: 18px;
     color: #3E2F23;
     display: flex;
     align-items: center;
+    gap: 5px;
 }
