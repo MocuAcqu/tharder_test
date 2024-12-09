@@ -11,8 +11,8 @@ async function initializeCounts(courseId) {
     try {
         const { data, error } = await supabase
             .from('reactions')
-            .select('p_reaction_type, count')
-            .eq('p_course_id', courseId);
+            .select('reaction_type, count')
+            .eq('course_id', courseId);
 
         if (error) throw error;
 
@@ -52,26 +52,26 @@ document.addEventListener('DOMContentLoaded', async () => {
         button.addEventListener('click', () => {
             const courseId = parseInt(button.getAttribute('data-course-id'), 10);
             const action = button.getAttribute('data-action');
+
+            if (!courseId || !action) {
+                console.error('無效的按鈕屬性:', { courseId, action });
+                return;
+            }
+
             updateReaction(courseId, action);
         });
     });
 
     // 初始化所有課程的計數
-    await initializeCounts(1);
-    await initializeCounts(2);
+    const { data: courses, error } = await supabase
+        .from('courses') // 假設有課程表
+        .select('id');
+
+    if (error) {
+        console.error('獲取課程列表失敗:', error);
+    } else {
+        for (const course of courses) {
+            await initializeCounts(course.id);
+        }
+    }
 });
-
-const { error } = await supabase.rpc('increment_reaction', {
-    p_course_id: courseId,  // 傳入對應的函數參數
-    p_reaction_type: reactionType,
-});
-
-if (error) {
-    console.error('RPC 調用失敗:', error);
-} else {
-    console.log('RPC 成功');
-}
-
-
-// 測試
-testRPC(1, 'cool');
