@@ -11,14 +11,14 @@ async function initializeCounts(courseId) {
     try {
         const { data, error } = await supabase
             .from('reactions')
-            .select('reaction_type, count')
-            .eq('course_id', courseId);
+            .select('p_reaction_type, count')
+            .eq('p_course_id', courseId);
 
         if (error) throw error;
 
         // 更新 UI
         data.forEach((reaction) => {
-            const elementId = `${reaction.reaction_type}-count-${courseId}`;
+            const elementId = `${reaction.p_reaction_type}-count-${courseId}`;
             document.getElementById(elementId).innerText = `${reaction.count}人`;
         });
     } catch (error) {
@@ -30,8 +30,8 @@ async function initializeCounts(courseId) {
 async function updateReaction(courseId, reactionType) {
     try {
         const { error } = await supabase.rpc('increment_reaction', {
-            course_id: courseId,
-            reaction_type: reactionType,
+            p_course_id: courseId,
+            p_reaction_type: reactionType,
         });
 
         if (error) throw error;
@@ -64,8 +64,8 @@ document.addEventListener('DOMContentLoaded', async () => {
 async function testRPC(courseId, reactionType) {
     try {
         const { error, data } = await supabase.rpc('increment_reaction', {
-            course_id: courseId,
-            reaction_type: reactionType,
+            p_course_id: courseId,
+            p_reaction_type: reactionType,
         });
         if (error) throw error;
         console.log('函數執行成功：', data);
