@@ -11,20 +11,28 @@ async function initializeCounts(courseId) {
     try {
         const { data, error } = await supabase
             .from('reactions')
-            .select('reaction_type, count')
+            .select('reaction_type, count') // 確保 reaction_type 和 count 是資料表中的正確欄位名
             .eq('course_id', courseId);
 
         if (error) throw error;
 
         // 更新 UI
         data.forEach((reaction) => {
-            const elementId = `${reaction.p_reaction_type}-count-${courseId}`;
-            document.getElementById(elementId).innerText = `${reaction.count}人`;
+            const elementId = `${reaction.reaction_type}-count-${courseId}`; // reaction_type
+            const countElement = document.getElementById(elementId);
+
+            if (!countElement) {
+                console.warn(`未找到元素: ${elementId}`);
+                return;
+            }
+
+            countElement.innerText = `${reaction.count}人`;
         });
     } catch (error) {
         console.error('初始化計數失敗:', error);
     }
 }
+
 
 // 更新反應計數
 async function updateReaction(courseId, reactionType) {
@@ -38,27 +46,33 @@ async function updateReaction(courseId, reactionType) {
 
         // 獲取當前的數值並更新 UI
         const countElement = document.getElementById(`${reactionType}-count-${courseId}`);
-        const currentCount = parseInt(countElement.innerText, 10);
+        if (!countElement) {
+            console.warn(`未找到更新元素: ${reactionType}-count-${courseId}`);
+            return;
+        }
+
+        const currentCount = parseInt(countElement.innerText, 10) || 0; // 確保數字默認為 0
         countElement.innerText = `${currentCount + 1}人`;
     } catch (error) {
         console.error('更新反應計數失敗:', error);
     }
 }
 
-// 綁定按鈕事件
+
 document.addEventListener('DOMContentLoaded', async () => {
+    // 綁定 "涼+1" 和 "硬+1" 按鈕
     const reactionButtons = document.querySelectorAll('.reaction-btn');
     reactionButtons.forEach((button) => {
         button.addEventListener('click', () => {
             const courseId = parseInt(button.getAttribute('data-course-id'), 10);
-            const action = button.getAttribute('data-action');
+            const action = button.getAttribute('data-action'); // "cool" 或 "hard"
 
             if (!courseId || !action) {
                 console.error('無效的按鈕屬性:', { courseId, action });
                 return;
             }
 
-            updateReaction(courseId, action);
+            updateReaction(courseId, action); // 更新按鈕計數
         });
     });
 
@@ -71,7 +85,7 @@ document.addEventListener('DOMContentLoaded', async () => {
         console.error('獲取課程列表失敗:', error);
     } else {
         for (const course of courses) {
-            await initializeCounts(course.id);
+            await initializeCounts(course.id); // 為每個課程初始化計數
         }
     }
 });
