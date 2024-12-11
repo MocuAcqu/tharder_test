@@ -1,12 +1,14 @@
 <!DOCTYPE html>
 <html lang="zh-Hant">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tharder - 屬於科技人的留言版</title>
     <link rel="stylesheet" href="learnStyle2.css">
-    <script  type="module" src="learnScript2.js" defer></script>
+    <script type="module" src="learnScript2.js" defer></script>
 </head>
+
 <body>
     <div class="nav">
         <div><a href="index.html" class="tharder-link">THARDER</a></div>
@@ -16,63 +18,182 @@
     </div>
 
     <main>
-    <div class="container">
-        <!-- 左側分類選單 -->
-        <div class="sidebar">
-            <a href="learn1.html"><button class="category-btn">問題請益</button></a>
-            <a href="learn2.html"><button class="category-btn">課程評價</button></a>
-            <a href="learn3.html"><button class="category-btn">資源分享</button></a>
-        </div>
-
-        <!-- 右側留言區域 -->
-        <div class="message-board">
-            <div class="message-header">
-                <h2>課程評價</h2>
+        <div class="container">
+            <!-- 左側分類選單 -->
+            <div class="sidebar">
+                <a href="learn1.html"><button class="category-btn">問題請益</button></a>
+                <a href="learn2.html"><button class="category-btn">課程評價</button></a>
+                <a href="learn3.html"><button class="category-btn">資源分享</button></a>
             </div>
-            <!-- 範例課程訊息框 -->
-            <div class="message">
-                <div class="course-info">
-                    <p class="course-name">教育資料探勘專題製作</p>
-                    <p class="teacher-name">蔡芸琤 老師</p>
-                    <p class="course-time">星期三 7-9</p>
-                </div>
-                <div class="actions">
-                    <div class="reaction">
-                        <div class="reaction-item">
-                            <span class="reaction-count" id="cool-count-1">0人</span>
-                            <button class="reaction-btn" data-action="cool" data-course-id="1">涼+1</button>
-                        </div>
-                        <div class="reaction-item">
-                            <span class="reaction-count" id="hard-count-1">0人</span>
-                            <button class="reaction-btn" data-action="hard" data-course-id="1">甜+1</button>
-                        </div>
 
-                        
+            <!-- 右側留言區域 -->
+            <div class="message-board">
+                <div class="message-header">
+                    <h2>課程評價</h2>
+                </div>
+                <!-- 範例課程訊息框 -->
+                <div class="message">
+                    <div class="course-info">
+                        <p class="course-name">訓練需求與成效評估</p>
+                        <p class="teacher-name">陳怡靜 老師</p>
+                        <p class="course-time">星期二 6-8</p>
+                    </div>
+                    <div class="actions">
+                        <div class="reaction">
+                            <div class="reaction-item">
+                                <span class="reaction-count" id="cool-count-22">0人</span>
+                                <button class="reaction-btn" data-action="cool" data-course-id="22">涼+1</button>
+                            </div>
+                            <div class="reaction-item">
+                                <span class="reaction-count" id="hard-count-22">0人</span>
+                                <button class="reaction-btn" data-action="hard" data-course-id="22">甜+1</button>
+                            </div>
+                        </div>
                     </div>
                 </div>
-            </div>
 
-            <div class="pages">
-                <a href="learn2.html">1</a>
-                <a href="learn2_2.html">2</a>
-                <a href="learn2_3.html">3</a>
-                <a href="learn2_4.html">4</a>
-                <a href="learn2_5.html">5</a>
-                <a href="learn2_6.html">6</a>
-                <a href="learn2_7.html">7</a>
-                <a href="learn2_8.html">8</a>
-                <a href="learn2_9.html">9</a>
-                <a href="learn2_10.html">10</a>
+                <div class="message">
+                    <div class="course-info">
+                        <p class="course-name">程式語言</p>
+                        <p class="teacher-name">蔡芸琤 老師</p>
+                        <p class="course-time">星期四 2-4</p>
+                    </div>
+                    <div class="actions">
+                        <div class="reaction">
+                            <div class="reaction-item">
+                                <span class="reaction-count" id="cool-count-23">0人</span>
+                                <button class="reaction-btn" data-action="cool" data-course-id="23">涼+1</button>
+                            </div>
+                            <div class="reaction-item">
+                                <span class="reaction-count" id="hard-count-23">0人</span>
+                                <button class="reaction-btn" data-action="hard" data-course-id="23">甜+1</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="message">
+                    <div class="course-info">
+                        <p class="course-name">展示設計</p>
+                        <p class="teacher-name">耿晧剛 老師</p>
+                        <p class="course-time">星期二 10-B</p>
+                    </div>
+                    <div class="actions">
+                        <div class="reaction">
+                            <div class="reaction-item">
+                                <span class="reaction-count" id="cool-count-24">0人</span>
+                                <button class="reaction-btn" data-action="cool" data-course-id="24">涼+1</button>
+                            </div>
+                            <div class="reaction-item">
+                                <span class="reaction-count" id="hard-count-24">0人</span>
+                                <button class="reaction-btn" data-action="hard" data-course-id="24">甜+1</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="message">
+                    <div class="course-info">
+                        <p class="course-name">結構設計</p>
+                        <p class="teacher-name">陳沛清 老師</p>
+                        <p class="course-time">星期四 7-9</p>
+                    </div>
+                    <div class="actions">
+                        <div class="reaction">
+                            <div class="reaction-item">
+                                <span class="reaction-count" id="cool-count-25">0人</span>
+                                <button class="reaction-btn" data-action="cool" data-course-id="25">涼+1</button>
+                            </div>
+                            <div class="reaction-item">
+                                <span class="reaction-count" id="hard-count-25">0人</span>
+                                <button class="reaction-btn" data-action="hard" data-course-id="25">甜+1</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="message">
+                    <div class="course-info">
+                        <p class="course-name">多媒體教材設計與製作</p>
+                        <p class="teacher-name">丁玉良 老師</p>
+                        <p class="course-time">星期二 7-9</p>
+                    </div>
+                    <div class="actions">
+                        <div class="reaction">
+                            <div class="reaction-item">
+                                <span class="reaction-count" id="cool-count-26">0人</span>
+                                <button class="reaction-btn" data-action="cool" data-course-id="26">涼+1</button>
+                            </div>
+                            <div class="reaction-item">
+                                <span class="reaction-count" id="hard-count-26">0人</span>
+                                <button class="reaction-btn" data-action="hard" data-course-id="26">甜+1</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="message">
+                    <div class="course-info">
+                        <p class="course-name">資料庫系統</p>
+                        <p class="teacher-name">蔡芸琤 老師</p>
+                        <p class="course-time">星期一 2-4</p>
+                    </div>
+                    <div class="actions">
+                        <div class="reaction">
+                            <div class="reaction-item">
+                                <span class="reaction-count" id="cool-count-27">0人</span>
+                                <button class="reaction-btn" data-action="cool" data-course-id="27">涼+1</button>
+                            </div>
+                            <div class="reaction-item">
+                                <span class="reaction-count" id="hard-count-27">0人</span>
+                                <button class="reaction-btn" data-action="hard" data-course-id="27">甜+1</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="message">
+                    <div class="course-info">
+                        <p class="course-name">產品設計</p>
+                        <p class="teacher-name">簡佑宏 老師</p>
+                        <p class="course-time">星期四 2-4</p>
+                    </div>
+                    <div class="actions">
+                        <div class="reaction">
+                            <div class="reaction-item">
+                                <span class="reaction-count" id="cool-count-28">0人</span>
+                                <button class="reaction-btn" data-action="cool" data-course-id="28">涼+1</button>
+                            </div>
+                            <div class="reaction-item">
+                                <span class="reaction-count" id="hard-count-28">0人</span>
+                                <button class="reaction-btn" data-action="hard" data-course-id="28">甜+1</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="pages">
+                    <a href="learn2.html">1</a>
+                    <a href="learn2_2.html">2</a>
+                    <a href="learn2_3.html">3</a>
+                    <a href="learn2_4.html">4</a>
+                    <a href="learn2_5.html">5</a>
+                    <a href="learn2_6.html">6</a>
+                    <a href="learn2_7.html">7</a>
+                    <a href="learn2_8.html">8</a>
+                    <a href="learn2_9.html">9</a>
+                    <a href="learn2_10.html">10</a>
+                </div>
             </div>
         </div>
-    </div>
-    
 
-    <div class="footer">
-        <h3>@網際網路程式設計 期末專題</h3>
-    </div>
-</main>
+
+        <div class="footer">
+            <h3>@網際網路程式設計 期末專題</h3>
+        </div>
+    </main>
 
 
 </body>
+
 </html>
