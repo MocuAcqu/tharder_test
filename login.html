@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login - Tharder</title>
     <link rel="stylesheet" href="loginStyle.css">
-    <script  type="module" defer></script>
 </head>
 <body>
     <!--Header -->
@@ -33,7 +32,7 @@
             <button type="button" class="signup-btn" id="signup-btn">Sign up</button>
         </form>
     </div>
-    <script>
+    <script type="module" defer>
         // 初始化 Supabase
         import { createClient } from 'https://esm.sh/@supabase/supabase-js@2';
         const SUPABASE_URL = 'https://iunfsvxrmneynpnzcjmq.supabase.co'; // 替換成你的 Supabase URL
