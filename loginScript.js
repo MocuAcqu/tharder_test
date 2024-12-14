@@ -1,3 +1,4 @@
+import bcrypt from 'https://cdn.skypack.dev/bcryptjs'; // 引入 bcrypt 用於密碼加密
 // 初始化 Supabase
 import { createClient } from 'https://esm.sh/@supabase/supabase-js@2';
 
@@ -6,47 +7,53 @@ const supabaseUrl = 'https://iunfsvxrmneynpnzcjmq.supabase.co'; // 從 Supabase 
 const supabaseKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Iml1bmZzdnhybW5leW5wbnpjam1xIiwicm9sZSI6ImFub24iLCJpYXQiOjE3MzEzMjcwNjAsImV4cCI6MjA0NjkwMzA2MH0.wmJwmGipaJmxs85hag8k5fB2fs6MLOHKj0eXffHVVYI'; // 從 Supabase 設定檔取得
 
 const supabase = createClient(supabaseUrl, supabaseKey);
-// 登入邏輯
+
 document.getElementById('login-form').addEventListener('submit', async (event) => {
     event.preventDefault();
-    const name = document.getElementById('name').value;
-    const username = document.getElementById('username').value;
-    const password = document.getElementById('password').value;
+    const name = document.getElementById('name').value.trim();
+    const username = document.getElementById('username').value.trim();
+    const password = document.getElementById('password').value.trim();
 
-    const { data, error } = await supabase
+    // 密碼加密
+    const hashedPassword = bcrypt.hashSync(password, 10);
+
+    // 檢查資料庫是否已存在該帳號
+    const { data: existingUser, error: checkError } = await supabase
         .from('users')
-        .select('*')
-        .eq('username', username)
-        .eq('password', password);
+        .select('id, name, password')
+        .eq('username', username);
 
-    if (error || data.length === 0) {
-        alert('登入失敗：帳號或密碼錯誤');
-    } else {
-        alert(`歡迎回來, ${data[0].name}!`);
-        // 儲存使用者資訊於 sessionStorage
-        sessionStorage.setItem('user', JSON.stringify(data[0]));
-        window.location.href = 'comments.html'; // 登入成功後跳轉至留言頁面
-    }
-});
-
-// 註冊邏輯
-document.getElementById('signup-btn').addEventListener('click', async () => {
-    const name = document.getElementById('name').value;
-    const username = document.getElementById('username').value;
-    const password = document.getElementById('password').value;
-
-    if (!name || !username || !password) {
-        alert('請完整填寫姓名、帳號與密碼');
+    if (checkError) {
+        alert('伺服器錯誤，請稍後再試');
+        console.error('檢查使用者錯誤：', checkError);
         return;
     }
 
-    const { data, error } = await supabase
-        .from('users')
-        .insert([{ name, username, password }]);
+    if (existingUser.length === 0) {
+        // 若帳號不存在，則進行註冊
+        const { data: newUser, error: signupError } = await supabase
+            .from('users')
+            .insert([{ name, username, password: hashedPassword }])
+            .select();
 
-    if (error) {
-        alert('註冊失敗，可能帳號已被使用');
+        if (signupError) {
+            alert('註冊失敗，請稍後再試');
+            console.error('註冊錯誤：', signupError);
+            return;
+        }
+
+        alert(`註冊成功！歡迎, ${name}!`);
+        sessionStorage.setItem('user', JSON.stringify(newUser[0]));
+        window.location.href = 'comments.html'; // 註冊成功後跳轉
     } else {
-        alert('註冊成功，請重新登入');
+        // 若帳號存在，檢查密碼
+        const isValidPassword = bcrypt.compareSync(password, existingUser[0].password);
+        if (isValidPassword) {
+            alert(`歡迎回來, ${existingUser[0].name}!`);
+            sessionStorage.setItem('user', JSON.stringify(existingUser[0]));
+            window.location.href = 'comments.html'; // 登入成功後跳轉
+        } else {
+            alert('登入失敗：密碼錯誤');
+        }
     }
 });
