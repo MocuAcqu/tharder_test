@@ -66,18 +66,21 @@ body {
 }
 
 .input-group label {
-    font-size: 16px;
+    font-size: 18px;
     color: #3E2F23;
     position: absolute;
-    top: -10px;
-    left: 10px;
-    background-color: #ece1d3;
+    top: -12px;
+    left: 20px;
     padding: 0 0 5px;
 }
 
 .input-group input {
-    width: 100%;
-    padding: 10px 0;
+    width: 90%;
+    padding: 8px 0;
+    margin-left: 5%;
+    margin-right: 5%;
+    margin-top: 5%;
+    margin-bottom: 2%;
     font-size: 16px;
     border: none;
     border-bottom: 2px solid #5A4738;
