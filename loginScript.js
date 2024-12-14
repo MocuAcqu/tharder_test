@@ -1,4 +1,3 @@
-import bcrypt from 'https://cdn.skypack.dev/bcryptjs'; // 引入 bcrypt 用於密碼加密
 // 初始化 Supabase
 import { createClient } from 'https://esm.sh/@supabase/supabase-js@2';
 
@@ -13,9 +12,6 @@ document.getElementById('login-form').addEventListener('submit', async (event) =
     const name = document.getElementById('name').value.trim();
     const username = document.getElementById('username').value.trim();
     const password = document.getElementById('password').value.trim();
-
-    // 密碼加密
-    const hashedPassword = bcrypt.hashSync(password, 10);
 
     // 檢查資料庫是否已存在該帳號
     const { data: existingUser, error: checkError } = await supabase
@@ -33,7 +29,7 @@ document.getElementById('login-form').addEventListener('submit', async (event) =
         // 若帳號不存在，則進行註冊
         const { data: newUser, error: signupError } = await supabase
             .from('users')
-            .insert([{ name, username, password: hashedPassword }])
+            .insert([{ name, username, password }])
             .select();
 
         if (signupError) {
@@ -47,8 +43,7 @@ document.getElementById('login-form').addEventListener('submit', async (event) =
         window.location.href = 'comments.html'; // 註冊成功後跳轉
     } else {
         // 若帳號存在，檢查密碼
-        const isValidPassword = bcrypt.compareSync(password, existingUser[0].password);
-        if (isValidPassword) {
+        if (existingUser[0].password === password) {
             alert(`歡迎回來, ${existingUser[0].name}!`);
             sessionStorage.setItem('user', JSON.stringify(existingUser[0]));
             window.location.href = 'comments.html'; // 登入成功後跳轉
