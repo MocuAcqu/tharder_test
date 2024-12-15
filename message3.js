@@ -61,6 +61,17 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // 點擊 + 按鈕，顯示彈窗
     addMessageBtn.addEventListener("click", () => {
+        const usernameInput = document.getElementById("username");
+        const user = JSON.parse(localStorage.getItem('user'));
+    
+        if (user && user.name) {
+            usernameInput.value = user.name; // 自動填入登入的使用者名稱
+            usernameInput.setAttribute('readonly', true); // 設為唯讀
+        } else {
+            usernameInput.value = ''; // 若無使用者資訊，清空輸入框
+            usernameInput.removeAttribute('readonly');
+        }
+    
         messageModal.classList.add("show");
     });
 
