@@ -247,15 +247,15 @@ html, body,main {
 }
 
 #logout-button{
-    background-color: #ba9c85;
+    background-color: #eee4dd;
     width: 100px;
-    border: #ba9c85;
+    border: #eee4dd;
     
     margin-left: 20px;
     font-size: 16px;
 }
 
 #logout-button:hover{
-    background-color: #a57848;
-    border: #6f5038;
+    background-color: #ba9c85;
+    border: #ba9c85;
 }
