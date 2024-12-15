@@ -43,7 +43,6 @@ body {
     justify-content: space-between;
     padding: 20px 20px;
     color: #FFF;
-    height: 30px;
     align-items: center;
     font-size: 25px;
 }
@@ -52,6 +51,7 @@ body {
     font-size: 14px;
     display: flex;
     align-items: center;
+    height: 20px;
 }
 
 .login-link {
@@ -122,4 +122,23 @@ body {
     font-size: 12px;
     text-align: center;
     padding: 8px 0;
+}
+
+#welcome-user{
+    font-size: 18px;
+    
+}
+
+#logout-button{
+    background-color: #ba9c85;
+    width: 100px;
+    border: #ba9c85;
+    
+    margin-left: 20px;
+    font-size: 16px;
+}
+
+#logout-button:hover{
+    background-color: #a57848;
+    border: #6f5038;
 }
