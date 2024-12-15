@@ -59,10 +59,21 @@ document.addEventListener('DOMContentLoaded', () => {
     // 初始化留言
     loadMessages();
 
-    // 點擊 + 按鈕，顯示彈窗
-    addMessageBtn.addEventListener("click", () => {
-        messageModal.classList.add("show");
-    });
+    // 點擊 + 按鈕，顯示彈窗並自動填入使用者名稱
+addMessageBtn.addEventListener("click", () => {
+    const usernameInput = document.getElementById("username");
+    const user = JSON.parse(localStorage.getItem('user'));
+
+    if (user && user.name) {
+        usernameInput.value = user.name; // 自動填入登入的使用者名稱
+        usernameInput.setAttribute('readonly', true); // 設為唯讀
+    } else {
+        usernameInput.value = ''; // 若無使用者資訊，清空輸入框
+        usernameInput.removeAttribute('readonly');
+    }
+
+    messageModal.classList.add("show");
+});
 
     // 點擊關閉按鈕，隱藏彈窗
     closeModal.addEventListener("click", () => {
