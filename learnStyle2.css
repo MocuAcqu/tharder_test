@@ -245,3 +245,17 @@ html, body,main {
     color: #3E2F23;
     font-size: 20px;
 }
+
+#logout-button{
+    background-color: #ba9c85;
+    width: 100px;
+    border: #ba9c85;
+    
+    margin-left: 20px;
+    font-size: 16px;
+}
+
+#logout-button:hover{
+    background-color: #a57848;
+    border: #6f5038;
+}
