@@ -40,13 +40,13 @@ document.getElementById('login-form').addEventListener('submit', async (event) =
 
         alert(`註冊成功！歡迎, ${name}!`);
         sessionStorage.setItem('user', JSON.stringify(newUser[0]));
-        window.location.href = 'comments.html'; // 註冊成功後跳轉
+        window.location.href = 'index.html'; // 註冊成功後跳轉
     } else {
         // 若帳號存在，檢查密碼
         if (existingUser[0].password === password) {
             alert(`歡迎回來, ${existingUser[0].name}!`);
             sessionStorage.setItem('user', JSON.stringify(existingUser[0]));
-            window.location.href = 'comments.html'; // 登入成功後跳轉
+            window.location.href = 'index.html'; // 登入成功後跳轉
         } else {
             alert('登入失敗：密碼錯誤');
         }
