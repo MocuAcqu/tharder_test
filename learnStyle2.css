@@ -24,6 +24,10 @@ html, body,main {
     font-size: 25px;
 }
 
+.nav-tharder{
+    margin-top: 10px;
+}
+
 .nav-right {
     font-size: 14px;
     display: flex;
