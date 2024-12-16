@@ -41,7 +41,7 @@ document.getElementById('login-form').addEventListener('submit', async (event) =
         alert(`註冊成功！歡迎, ${name}!`);
         // 儲存登入狀態和使用者資訊到 localStorage
         localStorage.setItem('user', JSON.stringify(newUser[0]));
-        window.location.href = 'index.html'; // 註冊成功後跳轉
+        window.location.href = 'index_login.html'; // 註冊成功後跳轉
     } else {
         // 若帳號存在，檢查密碼
         if (existingUser[0].password === password) {
